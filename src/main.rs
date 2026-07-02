@@ -1,0 +1,4 @@
+use mysql::*;
+
+fn main() {
+}
