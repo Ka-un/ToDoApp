@@ -15,7 +15,7 @@ fn main() {
     todo::ToDoList::print(&taches);
 
     //indique qu'une tache est complété
-    todo::ToDoList::complete(&mut taches, 2);
+    todo::ToDoList::complete(&mut taches, 1);
 
     //affiche la liste des taches
     todo::ToDoList::print(&taches);
