@@ -35,4 +35,10 @@ impl ToDoList {
             }
         }
     }
+
+    //supprime la tache avec un id précis ###Il faut rajouter un check pour voir que l'id ne dépasse pas la taille de la liste
+    pub fn remove(&mut self, id: usize){
+        self.tasks.remove(id);
+    }
+
 }
