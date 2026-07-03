@@ -14,13 +14,10 @@ fn main() {
     //affichages des taches
     todo::ToDoList::print(&taches);
 
-    //modification d'une tache
-    for i in &mut taches.tasks {
-        if i.id == 1 {
-            i.done = true;
-        }
-    }
+    //indique qu'une tache est complété
+    todo::ToDoList::complete(&mut taches, 2);
 
+    //affiche la liste des taches
     todo::ToDoList::print(&taches);
 }
 
