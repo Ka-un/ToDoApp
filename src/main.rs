@@ -1,13 +1,13 @@
-mod task;
+mod todo;
 
 
 fn main() {
 
     //création des taches
-    let mut taches: Vec<task::Task> = Vec::new();
-    taches.push(task::Task {id: 1, title: "premier".to_string(), done: false});
-    taches.push(task::Task {id: 2, title: "second".to_string(), done: false});
-    taches.push(task::Task {id: 3, title: "troisieme".to_string(), done: false});
+    let mut taches: Vec<todo::Task> = Vec::new();
+    taches.push(todo::Task {id: 1, title: "premier".to_string(), done: false});
+    taches.push(todo::Task {id: 2, title: "second".to_string(), done: false});
+    taches.push(todo::Task {id: 3, title: "troisieme".to_string(), done: false});
 
     //affichages des taches
     println!("-----");
@@ -29,3 +29,6 @@ fn main() {
     }
     println!("-----");
 }
+
+//fn add_todo(t: todo::Task) {
+//}
