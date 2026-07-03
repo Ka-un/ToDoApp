@@ -13,4 +13,12 @@ impl ToDoList {
     pub fn add(&mut self, t: Task) {
         self.tasks.push(t);
     }
+
+    pub fn print(&self) {
+        println!("-----");
+        for i in &self.tasks {
+        println!("{} {} {}", i.id, i.title, i.done);
+        }
+        println!("-----");
+    }
 }

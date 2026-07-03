@@ -12,11 +12,7 @@ fn main() {
     todo::ToDoList::add(&mut taches, todo::Task {id: 3, title: "troisieme".to_string(), done: false});
 
     //affichages des taches
-    println!("-----");
-    for i in &taches.tasks {
-        println!("{} {} {}", i.id, i.title, i.done);
-    }
-    println!("-----");
+    todo::ToDoList::print(&taches);
 
     //modification d'une tache
     for i in &mut taches.tasks {
@@ -25,10 +21,6 @@ fn main() {
         }
     }
 
-    println!("-----");
-    for i in &taches.tasks {
-        println!("{} {} {}", i.id, i.title, i.done);
-    }
-    println!("-----");
+    todo::ToDoList::print(&taches);
 }
 
