@@ -38,12 +38,20 @@ impl ToDoList {
 
     //indique qu'une tache est terminée
     pub fn complete(&mut self , id: u32){
-            for i in &mut self.tasks {
-                if i.id == id {
-                    i.done = true;
-                    break
-                }
+        match self.get_index(id) {
+            Some(index) => {
+                self.tasks[index].done = true;
             }
+            None => {
+                println!("la tâche n° {} n'a pas pu être modifiée, l'id n'existe pas", id)
+            }
+
+            //for i in &mut self.tasks {
+            //    if i.id == id {
+            //        i.done = true;
+            //        break
+            //    }
+        }
     }
 
     //supprime la tache avec un id précis ###Il faut rajouter un check pour voir que l'id ne dépasse pas la taille de la liste
