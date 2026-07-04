@@ -26,19 +26,27 @@ impl ToDoList {
         println!("-----");
     }
 
-    //indique qu'une tache est terminée
-    pub fn complete(&mut self , id: u32){
-        for i in &mut self.tasks {
-            if i.id == id {
-                i.done = true;
-                break
+    pub fn get_index(&self, id: u32) ->  Option<usize> {
+        for i in 0..self.tasks.len() {
+            if self.tasks[i].id == id {
+               return Some(i);
             }
         }
+        return None;
+    }
+
+    //indique qu'une tache est terminée
+    pub fn complete(&mut self , id: u32){
+            for i in &mut self.tasks {
+                if i.id == id {
+                    i.done = true;
+                    break
+                }
+            }
     }
 
     //supprime la tache avec un id précis ###Il faut rajouter un check pour voir que l'id ne dépasse pas la taille de la liste
     pub fn remove(&mut self, id: usize){
         self.tasks.remove(id);
     }
-
 }
