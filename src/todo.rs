@@ -45,16 +45,10 @@ impl ToDoList {
             None => {
                 println!("la tâche n° {} n'a pas pu être modifiée, l'id n'existe pas", id)
             }
-
-            //for i in &mut self.tasks {
-            //    if i.id == id {
-            //        i.done = true;
-            //        break
-            //    }
         }
     }
 
-    //supprime la tache avec un id précis ###Il faut rajouter un check pour voir que l'id ne dépasse pas la taille de la liste
+    //supprime la tache avec un id précis
     pub fn remove(&mut self, id: u32){
         match self.get_index(id) {
             Some(index) => {
