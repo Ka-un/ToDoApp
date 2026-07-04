@@ -26,6 +26,7 @@ impl ToDoList {
         println!("-----");
     }
 
+    //Retourne l'index d'une tâche en fonction de son id
     pub fn get_index(&self, id: u32) ->  Option<usize> {
         for i in 0..self.tasks.len() {
             if self.tasks[i].id == id {
@@ -46,7 +47,14 @@ impl ToDoList {
     }
 
     //supprime la tache avec un id précis ###Il faut rajouter un check pour voir que l'id ne dépasse pas la taille de la liste
-    pub fn remove(&mut self, id: usize){
-        self.tasks.remove(id);
+    pub fn remove(&mut self, id: u32){
+        match self.get_index(id) {
+            Some(index) => {
+                self.tasks.remove(index);
+            }
+            None => {
+                println!("la tâche n° {} n'a pas pu être supprimée, l'id n'existe pas", id)
+            }
+        }
     }
 }

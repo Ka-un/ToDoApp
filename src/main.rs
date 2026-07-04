@@ -20,7 +20,7 @@ fn main() {
     //affiche la liste des taches
     todo::ToDoList::print(&taches);
 
-    todo::ToDoList::remove(&mut taches, 3);
+    todo::ToDoList::remove(&mut taches, 4);
 
     todo::ToDoList::print(&taches);
 }
