@@ -42,9 +42,9 @@ fn main() {
                     let mut input_title: String = String::new();
                     let mut input_done: String = String::new();
 
+                    /////Bloque pour passer input_id de String à u32
                     println!("Veuillez rentrer un id pour la nouvelle tâche");
                     io::stdin().read_line(&mut input_id).unwrap();
-
                     let input_id: u32 = match input_id.trim().parse() {
                         Ok(n) => n,
                         Err(_) => {
@@ -56,8 +56,10 @@ fn main() {
                             continue
                         },
                     };
-
                     println!("Vous avez rentré le nombre {}", input_id);
+                    /////
+                    
+
                     io::stdin().read_line(&mut input_title).unwrap();
                     io::stdin().read_line(&mut input_done).unwrap();
 
