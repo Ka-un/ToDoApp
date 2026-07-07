@@ -10,7 +10,7 @@ fn main() {
         tasks: Vec::new(),
     };
     //todo::ToDoList::print(&taches);
-    todo::ToDoList::add(&mut taches, todo::Task {id: 1, title: "premier".to_string(), done: false});
+    //todo::ToDoList::add(&mut taches, todo::Task {id: 1, title: "premier".to_string(), done: false});
     // todo::ToDoList::add(&mut taches, todo::Task {id: 2, title: "second".to_string(), done: false});
     // todo::ToDoList::add(&mut taches, todo::Task {id: 3, title: "troisieme".to_string(), done: false});
 
@@ -40,7 +40,6 @@ fn main() {
             2 => {
                     let mut input_id: String = String::new();
                     let mut input_title: String = String::new();
-                    let mut input_done: String = String::new();
 
                     /////Bloque pour passer input_id de String à u32
                     println!("Veuillez rentrer un id pour la nouvelle tâche");
@@ -61,10 +60,8 @@ fn main() {
                     
                     println!("Veuillez rentrer un titre pour la nouvelle tâche");
                     io::stdin().read_line(&mut input_title).unwrap();
-                    io::stdin().read_line(&mut input_done).unwrap();
 
-
-                    //todo::ToDoList::add(&mut taches, todo::Task {id: input_id, title: input_title, done: input_done});
+                    todo::ToDoList::add(&mut taches, todo::Task {id: input_id, title: input_title, done: false});
                 },
             _ => continue,
         }

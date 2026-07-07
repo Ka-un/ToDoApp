@@ -21,7 +21,7 @@ impl ToDoList {
     pub fn print(&self) {
         println!("-----");
         for i in &self.tasks {
-            println!("{} {} {}", i.id, i.title, i.done);
+            println!("id : {} titre : {} état : {}", i.id, i.title, i.done);
         }
         println!("-----");
     }
