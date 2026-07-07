@@ -59,7 +59,7 @@ fn main() {
                     println!("Vous avez rentré le nombre {}", input_id);
                     /////
                     
-
+                    println!("Veuillez rentrer un titre pour la nouvelle tâche");
                     io::stdin().read_line(&mut input_title).unwrap();
                     io::stdin().read_line(&mut input_done).unwrap();
 
