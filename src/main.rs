@@ -1,6 +1,7 @@
 use std::io;
 
 mod todo;
+mod ui;
 
 
 fn main() {
@@ -32,7 +33,7 @@ fn main() {
             1 => todo::ToDoList::print(&taches),
             2 => ajouter_tache(&mut taches),
             3 => complete_tache(&mut taches),
-            4 => remove_tache(&mut taches),
+            4 => ui::remove_tache(&mut taches),
             _ => continue,
         }
 
@@ -82,23 +83,6 @@ fn complete_tache(to_do_list: &mut todo::ToDoList) {
     };
     match todo::ToDoList::complete(to_do_list, input_id) {
         Ok(()) => println!("La tache n° {} est terminée", input_id),
-        Err(e) => println!("{}", e),
-    }
-}
-
-fn remove_tache(to_do_list: &mut todo::ToDoList) {
-    let mut input_id: String = String::new();
-    println!("Veuillez rentrer l'id de la tache à supprimer");
-    io::stdin().read_line(&mut input_id).unwrap();
-    let input_id: u32 = match input_id.trim().parse() {
-        Ok(n) => n,
-        Err(_) => {
-            println!("Ce n'est pas un nombre valide.");
-            return
-        },
-    };
-    match todo::ToDoList::remove(to_do_list, input_id) {
-        Ok(()) => println!("La tache n° {} a été supprimée", input_id),
         Err(e) => println!("{}", e),
     }
 }
