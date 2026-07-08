@@ -50,13 +50,14 @@ impl ToDoList {
     }
 
     //supprime la tache avec un id précis
-    pub fn remove(&mut self, id: u32){
+    pub fn remove(&mut self, id: u32) -> Result<(), String>{
         match self.get_index(id) {
             Some(index) => {
                 self.tasks.remove(index);
+                Ok(())
             }
             None => {
-                println!("la tâche n° {} n'a pas pu être supprimée, l'id n'existe pas", id)
+                Err(format!("la tâche n° {} n'a pas pu être supprimée, l'id n'existe pas", id))
             }
         }
     }
