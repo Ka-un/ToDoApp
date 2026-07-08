@@ -89,7 +89,5 @@ fn complete_tache(to_do_list: &mut todo::ToDoList) {
         Ok(()) => println!("La tache n° {} est terminée", input_id),
         Err(e) => println!("{}", e),
     }
-
-
 }
 
