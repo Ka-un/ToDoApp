@@ -10,7 +10,7 @@ fn main() {
         tasks: Vec::new(),
     };
 
-    todo::ToDoList::complete(&mut taches, 1);
+    //todo::ToDoList::complete(&mut taches, 1);
 
     todo::ToDoList::remove(&mut taches, 1);
 
@@ -85,8 +85,11 @@ fn complete_tache(to_do_list: &mut todo::ToDoList) {
             return
         },
     };
-    todo::ToDoList::complete(to_do_list, input_id);
-    println!("La tache n° {} est terminée", input_id);
+    match todo::ToDoList::complete(to_do_list, input_id) {
+        Ok(()) => println!("La tache n° {} est terminée", input_id),
+        Err(e) => println!("{}", e),
+    }
+
 
 }
 

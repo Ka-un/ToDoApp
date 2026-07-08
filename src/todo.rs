@@ -37,13 +37,14 @@ impl ToDoList {
     }
 
     //indique qu'une tache est terminée
-    pub fn complete(&mut self , id: u32){
+    pub fn complete(&mut self , id: u32) -> Result<(), String>{
         match self.get_index(id) {
             Some(index) => {
                 self.tasks[index].done = true;
+                Ok(())
             }
             None => {
-                println!("la tâche n° {} n'a pas pu être modifiée, l'id n'existe pas", id)
+                Err(format!("la tâche n° {} n'a pas pu être modifiée, l'id n'existe pas", id))
             }
         }
     }
