@@ -7,9 +7,7 @@ mod ui;
 fn main() {
 
     //création de la liste des taches
-    let mut taches = todo::ToDoList {
-        tasks: Vec::new(),
-    };
+    let mut taches = todo::ToDoList::new();
 
     //todo::ToDoList::remove(&mut taches, 1);
 

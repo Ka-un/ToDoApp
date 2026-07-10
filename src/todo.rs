@@ -12,6 +12,11 @@ pub struct ToDoList {
 
 //fonctions lié à la liste des taches
 impl ToDoList {
+    pub fn new() -> Self {
+        Self {
+            tasks: Vec::new(),
+        }
+    }
     //ajoute une tache
     pub fn add(&mut self, t: Task) {
         self.tasks.push(t);
