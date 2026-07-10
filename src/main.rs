@@ -12,12 +12,7 @@ fn main() {
     //todo::ToDoList::remove(&mut taches, 1);
 
     loop {
-        println!("uuuuuuuuuu MENU uuuuuuuuuu");
-        println!("1) Afficher la ToDoList");
-        println!("2) Ajouter une tâche");
-        println!("3) Indiquer qu'une tâche est terminée");
-        println!("4) supprimer une tâche \n");
-        println!("uuuuuuuuuuuuuuuuuuuuuuuuuu");
+        ui::afficher_menu();
 
         let mut input = String::new();
         io::stdin().read_line(&mut input).unwrap();

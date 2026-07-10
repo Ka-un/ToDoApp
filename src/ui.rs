@@ -1,6 +1,16 @@
 use std::io;
 use crate::todo;
 
+
+pub fn afficher_menu() {
+        println!("uuuuuuuuuu MENU uuuuuuuuuu");
+        println!("1) Afficher la ToDoList");
+        println!("2) Ajouter une tâche");
+        println!("3) Indiquer qu'une tâche est terminée");
+        println!("4) supprimer une tâche");
+        println!("uuuuuuuuuuuuuuuuuuuuuuuuuu");
+}
+
 //permet à l'utilisateur de supprimer une tache depuis le menu
 pub fn remove_tache(to_do_list: &mut todo::ToDoList) {
     let mut input_id: String = String::new();
