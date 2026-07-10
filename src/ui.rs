@@ -18,3 +18,26 @@ pub fn remove_tache(to_do_list: &mut todo::ToDoList) {
         Err(e) => println!("{}", e),
     }
 }
+
+pub fn ajouter_tache(to_do_list: &mut todo::ToDoList) {
+    let mut input_id: String = String::new();
+    let mut input_title: String = String::new();
+
+    /////Bloque pour passer input_id de "String" à "u32"
+    println!("Veuillez rentrer un id pour la nouvelle tâche");
+    io::stdin().read_line(&mut input_id).unwrap();
+    let input_id: u32 = match input_id.trim().parse() {
+        Ok(n) => n,
+        Err(_) => {
+            println!("Ce n'est pas un nombre valide.");
+            return
+            },
+        };
+    println!("Vous avez rentré le nombre {}", input_id);
+    /////
+                    
+    println!("Veuillez rentrer un titre pour la nouvelle tâche");
+    io::stdin().read_line(&mut input_title).unwrap();
+
+    todo::ToDoList::add(to_do_list, todo::Task {id: input_id, title: input_title, done: false});
+}

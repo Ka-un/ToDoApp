@@ -31,7 +31,7 @@ fn main() {
 
         match input {
             1 => todo::ToDoList::print(&taches),
-            2 => ajouter_tache(&mut taches),
+            2 => ui::ajouter_tache(&mut taches),
             3 => complete_tache(&mut taches),
             4 => ui::remove_tache(&mut taches),
             _ => continue,
@@ -45,29 +45,6 @@ fn main() {
         ////clear le terminal à chaque boucle 
         print!("\x1B[2J\x1B[1;1H");
     }
-}
-
-fn ajouter_tache(to_do_list: &mut todo::ToDoList) {
-    let mut input_id: String = String::new();
-    let mut input_title: String = String::new();
-
-    /////Bloque pour passer input_id de "String" à "u32"
-    println!("Veuillez rentrer un id pour la nouvelle tâche");
-    io::stdin().read_line(&mut input_id).unwrap();
-    let input_id: u32 = match input_id.trim().parse() {
-        Ok(n) => n,
-        Err(_) => {
-            println!("Ce n'est pas un nombre valide.");
-            return
-            },
-        };
-    println!("Vous avez rentré le nombre {}", input_id);
-    /////
-                    
-    println!("Veuillez rentrer un titre pour la nouvelle tâche");
-    io::stdin().read_line(&mut input_title).unwrap();
-
-    todo::ToDoList::add(to_do_list, todo::Task {id: input_id, title: input_title, done: false});
 }
 
 fn complete_tache(to_do_list: &mut todo::ToDoList) {
