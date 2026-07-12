@@ -11,11 +11,16 @@ pub fn afficher_menu() {
         println!("uuuuuuuuuuuuuuuuuuuuuuuuuu");
 }
 
+fn lecture_input() -> String {
+    let mut input_id: String = String::new();
+    io::stdin().read_line(&mut input_id).unwrap();
+    input_id
+}
+
 //permet à l'utilisateur de supprimer une tache depuis le menu
 pub fn remove_tache(to_do_list: &mut todo::ToDoList) {
-    let mut input_id: String = String::new();
     println!("Veuillez rentrer l'id de la tache à supprimer");
-    io::stdin().read_line(&mut input_id).unwrap();
+    let input_id = lecture_input();
     let input_id: u32 = match input_id.trim().parse() {
         Ok(n) => n,
         Err(_) => {
@@ -30,12 +35,10 @@ pub fn remove_tache(to_do_list: &mut todo::ToDoList) {
 }
 
 pub fn ajouter_tache(to_do_list: &mut todo::ToDoList) {
-    let mut input_id: String = String::new();
-    let mut input_title: String = String::new();
+    println!("Veuillez rentrer un id pour la nouvelle tâche");
+    let input_id = lecture_input();
 
     /////Bloque pour passer input_id de "String" à "u32"
-    println!("Veuillez rentrer un id pour la nouvelle tâche");
-    io::stdin().read_line(&mut input_id).unwrap();
     let input_id: u32 = match input_id.trim().parse() {
         Ok(n) => n,
         Err(_) => {
@@ -47,15 +50,14 @@ pub fn ajouter_tache(to_do_list: &mut todo::ToDoList) {
     /////
                     
     println!("Veuillez rentrer un titre pour la nouvelle tâche");
-    io::stdin().read_line(&mut input_title).unwrap();
+    let input_title = lecture_input();
 
     todo::ToDoList::add(to_do_list, todo::Task {id: input_id, title: input_title, done: false});
 }
 
 pub fn complete_tache(to_do_list: &mut todo::ToDoList) {
-    let mut input_id: String = String::new();
     println!("Veuillez rentrer l'id de la tâche terminée");
-    io::stdin().read_line(&mut input_id).unwrap();
+    let input_id = lecture_input();
     let input_id: u32 = match input_id.trim().parse() {
         Ok(n) => n,
         Err(_) => {

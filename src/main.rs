@@ -9,7 +9,6 @@ fn main() {
     //création de la liste des taches
     let mut taches = todo::ToDoList::new();
 
-    //todo::ToDoList::remove(&mut taches, 1);
 
     loop {
         ui::afficher_menu();
