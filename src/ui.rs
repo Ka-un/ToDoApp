@@ -13,18 +13,19 @@ pub fn afficher_menu() {
 
 fn lecture_input() -> String {
     let mut input_id: String = String::new();
-    io::stdin().read_line(&mut input_id).unwrap();
+    io::stdin()
+        .read_line(&mut input_id)
+        .unwrap();
     input_id
 }
 
 //permet à l'utilisateur de supprimer une tache depuis le menu
 pub fn remove_tache(to_do_list: &mut todo::ToDoList) {
     println!("Veuillez rentrer l'id de la tache à supprimer");
-    let input_id = lecture_input();
-    let input_id: u32 = match input_id.trim().parse() {
+    let input_id: u32 = match lecture_input().trim().parse() {
         Ok(n) => n,
-        Err(_) => {
-            println!("Ce n'est pas un nombre valide.");
+        Err(e) => {
+            println!("\n Error '{e}' \n\n Ce n'est pas un nombre valide. \n Veuillez réessayer \n");
             return
         },
     };
