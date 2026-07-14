@@ -22,7 +22,7 @@ fn main() {
     let mut taches = todo::ToDoList::new();
 
     println!("Chargement de la database");
-    match database::load_taches(&mut taches, &mut conn) {
+    match database::load_todolist(&mut taches, &mut conn) {
         Ok(_) => println!("Chargement terminé"),
 
         Err(e) => println!("Erreur chargement : {}", e),
@@ -33,10 +33,7 @@ fn main() {
     loop {
         ui::afficher_menu();
 
-        let mut input = String::new();
-        io::stdin().read_line(&mut input).unwrap();
-
-        let input: u32 = match input.trim().parse() {
+        let input: u32 = match ui::lecture_input().trim().parse() {
             Ok(num) => num,
             Err(_) => continue,
         };
@@ -47,6 +44,10 @@ fn main() {
             2 => ui::ajouter_tache(&mut taches),
             3 => ui::complete_tache(&mut taches),
             4 => ui::remove_tache(&mut taches),
+            5 => {
+                ui::quit_app(&mut taches, &mut conn);
+                break;
+            }
             _ => continue,
         }
 

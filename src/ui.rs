@@ -1,5 +1,8 @@
+use mysql::PooledConn;
+
 use std::io;
 use crate::todo;
+use crate::database;
 //Gère les fonctions liés au menu 
 
 pub fn afficher_menu() {
@@ -8,11 +11,12 @@ pub fn afficher_menu() {
         println!("2) Ajouter une tâche");
         println!("3) Indiquer qu'une tâche est terminée");
         println!("4) supprimer une tâche");
+        println!("5) quitter");
         println!("uuuuuuuuuuuuuuuuuuuuuuuuuu");
 }
 
 //Demande a l'utilisateur de rentrer une valeur 
-fn lecture_input() -> String {
+pub fn lecture_input() -> String {
     let mut input_id: String = String::new();
     io::stdin()
         .read_line(&mut input_id)
@@ -74,6 +78,14 @@ pub fn complete_tache(to_do_list: &mut todo::ToDoList) {
     };
     match todo::ToDoList::complete(to_do_list, input_id) {
         Ok(()) => println!("La tache n° {} est terminée", input_id),
+        Err(e) => println!("{}", e),
+    }
+}
+
+pub fn quit_app(to_do_list: &mut todo::ToDoList, conn: &mut PooledConn) {
+    println!("sauvegarde des taches");
+    match database::save_todolist(to_do_list, conn) {
+        Ok(()) => println!("Sauvegarde terminée"),
         Err(e) => println!("{}", e),
     }
 }
