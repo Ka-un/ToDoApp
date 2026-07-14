@@ -2,9 +2,19 @@ use std::io;
 
 mod todo;
 mod ui;
+mod database;
 
 
 fn main() {
+
+    match database::connexion() {
+       Ok(_) => {
+            println!("Connexion réussie à la base de donnée");
+        }
+        Err(e) => {
+            println!("Erreur : {}", e);
+        }
+    }
 
     //création de la liste des taches
     let mut taches = todo::ToDoList::new();

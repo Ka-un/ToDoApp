@@ -2,6 +2,7 @@
 pub struct Task {
     pub id: u32,
     pub title: String,
+    //indique si la tache est terminée ou non 
     pub done: bool,
 }
 
@@ -12,17 +13,19 @@ pub struct ToDoList {
 
 //fonctions lié à la liste des taches
 impl ToDoList {
+    //création d'une nouvelle liste
     pub fn new() -> Self {
         Self {
             tasks: Vec::new(),
         }
     }
-    //ajoute une tache
+
+    //ajoute une tache dans une ToDoList
     pub fn add(&mut self, t: Task) {
         self.tasks.push(t);
     }
 
-    //affiche toutes les taches
+    //affiche toutes les taches d'une liste
     pub fn print(&self) {
         println!("-----");
         for i in &self.tasks {
@@ -31,7 +34,7 @@ impl ToDoList {
         println!("-----");
     }
 
-    //Retourne l'index d'une tâche en fonction de son id
+    //Retourne l'index dans une liste, d'une tâche en fonction de son id
     pub fn get_index(&self, id: u32) ->  Option<usize> {
         for i in 0..self.tasks.len() {
             if self.tasks[i].id == id {
