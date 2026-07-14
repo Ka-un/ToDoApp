@@ -7,17 +7,27 @@ mod database;
 
 fn main() {
 
-    match database::connexion() {
-       Ok(_) => {
+    let mut conn = match database::connexion() {
+       Ok(conn) => {
             println!("Connexion réussie à la base de donnée");
+            conn
         }
         Err(e) => {
             println!("Erreur : {}", e);
+            return;
         }
-    }
+    };
 
     //création de la liste des taches
     let mut taches = todo::ToDoList::new();
+
+    println!("Chargement de la database");
+    match database::load_taches(&mut taches, &mut conn) {
+        Ok(_) => println!("Chargement terminé"),
+
+        Err(e) => println!("Erreur chargement : {}", e),
+    }
+
 
 
     loop {
@@ -32,6 +42,7 @@ fn main() {
         };
 
         match input {
+            //TODO : remplacer par une fonction ui
             1 => todo::ToDoList::print(&taches),
             2 => ui::ajouter_tache(&mut taches),
             3 => ui::complete_tache(&mut taches),
